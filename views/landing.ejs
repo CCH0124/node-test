@@ -11,5 +11,13 @@
       <input name="lead_email" type="email" placeholder="Enter your email address">
       <button type="submit">submite</button>
     </form>
+    <% if(leads.length >= 0){ %>
+      <h1>Leads</h1>
+      <% for(let i=0; i < leads.length; i++) {%>
+        <p><%= leads[i].email %></p>
+      <% } %>
+    <% } %>
   </body>
 </html>
+<!-- leads.forEach(function(lead){  }); -->
+<!--for(lead in leads)-->
