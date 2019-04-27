@@ -11,10 +11,14 @@
       <input name="lead_email" type="email" placeholder="Enter your email address">
       <button type="submit">submite</button>
     </form>
-    <% if(leads.length >= 0){ %>
+    <% if(leads){ %>
       <h1>Leads</h1>
       <% for(let i=0; i < leads.length; i++) {%>
-        <p><%= leads[i].email %></p>
+        <p>
+          <span>
+            <%= leads[i].email %> | <a href="/lead/<%= leads[i].id%>">Detail</a>
+          </span>
+        </p>
       <% } %>
     <% } %>
   </body>
