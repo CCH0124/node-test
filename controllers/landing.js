@@ -1,6 +1,7 @@
 const models = require('../models');
+
 exports.getLanding  = function(req, res, next) {
-    res.render('landing', { title: 'Express' });
+    res.render('index', { title: 'Express' });
 }
 
 exports.submitLead = (req, res, next) => {
@@ -26,8 +27,31 @@ exports.showLead  = (req, res, next) => {
             id: req.params.lead_id
         }
     }).then(lead => {
-        console.log(lead);
-        res.render('lead', { title: 'title',
+        res.render('lead', { title: 'Lead',
                 lead: lead });
+    });
+}
+
+exports.showEditLead  = (req, res, next) => {
+    return models.Lead.findOne({
+        where: {
+            id: req.params.lead_id
+        }
+    }).then(lead => {
+        res.render('lead/edit_lead', { title: 'Edit',
+                lead: lead });
+    });
+}
+
+exports.editLead  = (req, res, next) => {
+    req.params.lead_id
+    req.body.lead_email
+    return models.Lead.update({
+            email: req.body.lead_email
+        },{where: {
+            id: req.params.lead_id
+        }
+    }).then(result => {
+        res.redirect('/lead/'+ req.params.lead_id)
     });
 }

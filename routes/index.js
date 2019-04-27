@@ -6,4 +6,6 @@ router.get('/', landing.getLanding);
 router.post('/', landing.submitLead);
 router.get('/leads', landing.showLeads);
 router.get('/lead/:lead_id', landing.showLead);
+router.get('/lead/:lead_id/edit', landing.showEditLead);
+router.post('/lead/:lead_id/edit', landing.editLead);
 module.exports = router;
