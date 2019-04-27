@@ -1,8 +1,13 @@
+const models = require('../models');
 exports.getLanding  = function(req, res, next) {
     res.render('landing', { title: 'Express' });
 }
 
 exports.submitLead = (req, res, next) => {
-    console.log("Lead Email:", req.body.lead_email);
-    res.redirect('/');
+    return models.Lead.create({
+        email: req.body.lead_email
+    }).then(lead => {
+        res.redirect('/');
+    });
+    
 }
