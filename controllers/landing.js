@@ -44,8 +44,6 @@ exports.showEditLead  = (req, res, next) => {
 }
 
 exports.editLead  = (req, res, next) => {
-    req.params.lead_id
-    req.body.lead_email
     return models.Lead.update({
             email: req.body.lead_email
         },{where: {
@@ -54,4 +52,14 @@ exports.editLead  = (req, res, next) => {
     }).then(result => {
         res.redirect('/lead/'+ req.params.lead_id)
     });
+}
+
+exports.deleteLead = (req, res, next) => {
+    return models.Lead.destroy({
+        where: {
+            id: req.params.lead_id
+        }
+    }).then(result => {
+        res.redirect('/leads');
+    })
 }
