@@ -4,6 +4,8 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="/javascripts/leads.js"></script>
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
@@ -14,10 +16,11 @@
     <% if(leads){ %>
       <h1>Leads</h1>
       <% for(let i=0; i < leads.length; i++) {%>
-        <p>
+        <p id=<%= leads[i].id %>>
           <span>
-            <%= leads[i].email %> | <a href="/lead/<%= leads[i].id%>">Detail</a>
+            <%= leads[i].email %> | <a href="/lead/<%= leads[i].id%>">Detail</a> |
           </span>
+          <button onClick="deleteLead(`<%= leads[i].id %>`)"> Delete </button>
         </p>
       <% } %>
     <% } %>
