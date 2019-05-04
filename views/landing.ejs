@@ -5,23 +5,30 @@
   <script src="/javascripts/leads.js"></script>
   <%- include('./common/footer.ejs')%>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <form action="/" method="POST">
-      <input name="lead_email" type="email" placeholder="Enter your email address">
-      <button type="submit">submite</button>
-    </form>
-    <% if(leads){ %>
-      <h1>Leads</h1>
-      <% for(let i=0; i < leads.length; i++) {%>
-        <p id=<%= leads[i].id %>>
-          <span>
-            <%= leads[i].email %> | <a href="/lead/<%= leads[i].id%>">Detail</a> |
-          </span>
-          <button onClick="deleteLead(`<%= leads[i].id %>`)"> Delete </button>
-        </p>
-      <% } %>
-    <% } %>
+    <%- include('./common/navbar.ejs') %>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 order-md-1 text-center text-md-left pr-md-5">
+          <h1 class="mb-3">
+            Minum Viable Landing Page
+          </h1>
+          <p class="lead">
+            This tutorial teaches you how to build a NodeJS web application covering key topics.
+          </p>
+          <p class="lead mb-4">
+            Learn how to lunch a landing page and start collecting sales leads.
+          </p>
+          <form action="/" method="POST">
+            <div class="input-group mb-3">
+              <input class="form-control" name="lead_email" type="email" placeholder="Enter your email address">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">Get Start</button>
+              </div>
+            </div>
+          </form>      
+        </div>
+      </div>
+    </div>
   </body>
 </html>
 <!-- leads.forEach(function(lead){  }); -->
